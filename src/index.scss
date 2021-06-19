@@ -1,0 +1,10 @@
+@import './theme-colors.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import url("https://use.typekit.net/szl5okm.css");
+
+body {
+	color: map-get($theme-colors, "primary");
+	font-family: sweet-sans-pro, sans-serif;
+	font-style: normal;
+	font-weight: 100;
+}
