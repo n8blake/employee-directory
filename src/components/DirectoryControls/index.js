@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useStoreContext } from '../../utils/GlobalState';
 import useDebounce from "../../utils/debounceHook";
-import { SET_VIEW_MODE, LOADING, SEARCH, UPDATE_SEARCH_RESULTS } from '../../utils/actions';
+import { SET_VIEW_MODE, SEARCH, UPDATE_SEARCH_RESULTS } from '../../utils/actions';
 import './style.scss';
 
 function DirectoryControls() {
@@ -9,7 +9,7 @@ function DirectoryControls() {
     const [state, dispatch] = useStoreContext();
     const [search, setSearch] = useState("");
 
-    const debouncedSearchTerm = useDebounce(search, 500);
+    const debouncedSearchTerm = useDebounce(search, 100);
 
     const setListView = () => {
         dispatch({type: SET_VIEW_MODE, viewMode: "list"})
@@ -26,6 +26,14 @@ function DirectoryControls() {
     useEffect(() => {
         // if there is nothing searched...
         if(!search){
+            dispatch({
+                type: SEARCH,
+                searchTerm: ""
+            });
+            dispatch({
+                type: UPDATE_SEARCH_RESULTS,
+                searchResults: state.employees
+            });
             return;
         }
 
@@ -37,16 +45,24 @@ function DirectoryControls() {
             });
             // update searched results list
             // const result = words.filter(word => word.length > 6);
+            // console.log(debouncedSearchTerm);
+            const searchResults = state.employees.filter(employee => {
+                // console.log(employee.name.first + ' ' + employee.name.last);
+                // console.log(employee.name.first.indexOf(debouncedSearchTerm) > -1);
+                // console.log(employee.name.last.indexOf(debouncedSearchTerm) > -1);
+                return (
+                employee.name.first.indexOf(debouncedSearchTerm) > -1 ||
+                employee.name.last.indexOf(debouncedSearchTerm) > -1 
+                )
+            })
+            //console.log(searchResults);
             dispatch({
                 type: UPDATE_SEARCH_RESULTS,
-                searchResults: state.employees.filter(employee => (
-                    employee.name.first.indexOf(debouncedSearchTerm > -1) ||
-                    employee.name.last.indexOf(debouncedSearchTerm > -1) 
-                    ))
+                searchResults: searchResults
             })
 
         }
-    }, [debouncedSearchTerm]);
+    }, [debouncedSearchTerm, dispatch, search, state.employees]);
 
     return (
         <div className="d-flex jusitify-content-center">    

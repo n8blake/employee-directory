@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import { UPDATE_EMPLOYEES, LOADING } from '../../utils/actions';
+import { UPDATE_EMPLOYEES, UPDATE_SEARCH_RESULTS, LOADING } from '../../utils/actions';
 import API from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalState';
-import style from './DirectoryData.scss';
+import './DirectoryData.scss';
 
 function DirectoryData(){
 	const [state, dispatch] = useStoreContext();
@@ -16,21 +16,23 @@ function DirectoryData(){
 					type: UPDATE_EMPLOYEES,
 					employees: results.data.results
 				})
+				dispatch({
+					type: UPDATE_SEARCH_RESULTS,
+					searchResults: results.data.results
+				})
 			})
 			.catch(error => console.error(error));
 	}
 
 	useEffect(() => {
 		getData();
-	}, []);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[]);
 
 	return(
 		<div>
 			<div>
-				
-			</div>
-			<div>
-			{ state.employees.length ? (
+			{ state.searchResults.length ? (
 				<table className="table">
 					<thead>
 						<tr>
@@ -39,7 +41,7 @@ function DirectoryData(){
 						</tr>
 					</thead>
 					<tbody>
-						{ state.employees.map(employee => (
+						{ state.searchResults.map(employee => (
 							<tr key={employee.id.value.replace(/\s/g, "")}>
 								<td>{employee.name.first} {employee.name.last}</td>
 								<td>{employee.phone}</td>
