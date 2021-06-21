@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
-// import DirectoryControls from '../DirectoryControls/DirectoryControls.js';
-// import DirectoryData from '../DirectoryData/DirectoryData.js';
+import DirectoryControls from '../DirectoryControls/';
+import DirectoryData from '../DirectoryData/DirectoryData.js';
 
 class Directory extends React.Component {
 
@@ -10,7 +10,8 @@ class Directory extends React.Component {
 	render(){
 		return(
 			<div>
-				controls [+ -]
+				<DirectoryControls />
+				<DirectoryData />
 			</div>
 		);
 	}
