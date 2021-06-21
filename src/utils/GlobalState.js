@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
 // import actions
-import { SET_VIEW_MODE, LOADING } from "./actions";
+import { SET_VIEW_MODE, UPDATE_EMPLOYEES, LOADING } from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -12,6 +12,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 viewMode: action.viewMode,
+                loading: false
+            }
+        case UPDATE_EMPLOYEES:
+            return {
+                ...state,
+                employees: [...action.employees],
                 loading: false
             }
         case LOADING: 
