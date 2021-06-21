@@ -1,18 +1,34 @@
 import React, { createContext, useReducer, useContext } from "react";
 // import actions
+import { SET_VIEW_MODE, LOADING } from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
     // switch on action type
-    return state;
+    switch(action.type){
+        case SET_VIEW_MODE:
+            return {
+                ...state,
+                viewMode: action.viewMode,
+                loading: false
+            }
+        case LOADING: 
+            return {
+                ...state,
+                loading: true
+            }
+        default: 
+            return state;
+    }
 }
 
 const StoreProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer, {
         employees: [],
         activeEmployee: {},
+        viewMode: "table",
         loading: false
     });
 
