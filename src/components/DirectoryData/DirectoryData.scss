@@ -1,1 +1,11 @@
-.DirectoryData {}
+@import '../../theme-colors.scss';
+
+.DirectoryData {
+    color: map-get($theme-colors, "primary");
+}
+
+table, thead, th, tbody, tr, td {
+    color: map-get($theme-colors, "primary");
+    border-color: map-get($theme-colors, "dark");
+    
+}

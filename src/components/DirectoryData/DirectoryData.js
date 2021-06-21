@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { UPDATE_EMPLOYEES, LOADING } from '../../utils/actions';
 import API from '../../utils/API';
 import { StoreProvider, useStoreContext } from '../../utils/GlobalState';
-import './DirectoryData.scss';
+import style from './DirectoryData.scss';
 
 function DirectoryData(){
 	const [state, dispatch] = useStoreContext();
@@ -28,7 +28,7 @@ function DirectoryData(){
 		<div>
 			<div>
 			{ state.employees.length ? (
-				<table>
+				<table className="table">
 					<thead>
 						<tr>
 							<th>Name</th>
@@ -37,7 +37,7 @@ function DirectoryData(){
 					</thead>
 					<tbody>
 						{ state.employees.map(employee => (
-							<tr>
+							<tr key={employee.id.value.replace(/\s/g, "")}>
 								<td>{employee.name.first} {employee.name.last}</td>
 								<td>{employee.phone}</td>
 							</tr>
