@@ -16,18 +16,24 @@ function DirectoryControls() {
     }
 
     return (
-        <div>
-            {state.viewMode === 'list' ? (
-                <div>
-                    <button key="1" className="btn btn-primary mx-2" >List View</button>
-                    <button key="2" className="btn btn-outline-primary mx-2" onClick={() => setTableView()}>Table View</button>
-                </div>
-            ) : (
-                <div>
-                    <button key="3" className="btn btn-outline-primary mx-2" onClick={() => setListView()}>List View</button>
-                    <button key="4" className="btn btn-primary mx-2" >Table View</button>
-                </div>
-            )}
+        <div className="d-flex jusitify-content-center">    
+            <div>
+                {state.viewMode === 'list' ? (
+                    <span>
+                        <button key="1" className="btn btn-primary mx-2" >List View</button>
+                        <button key="2" className="btn btn-outline-primary mx-2" onClick={() => setTableView()}>Table View</button>
+                    </span>
+                ) : (
+                    <span>
+                        <button key="3" className="btn btn-outline-primary mx-2" onClick={() => setListView()}>List View</button>
+                        <button key="4" className="btn btn-primary mx-2" >Table View</button>
+                    </span>
+                )}
+            </div>
+            <div className="d-flex justify-content-center">
+                <i className="bi bi-search m-2"></i>
+                <input className="form-control ml-2" type="text" />
+            </div>
         </div>
     )
 
