@@ -1,2 +1,3 @@
 export const SET_VIEW_MODE = "SET_VIEW_MODE";
 export const LOADING = "LOADING";
+export const UPDATE_EMPLOYEES = "UPDATE_EMPLOYEES";
