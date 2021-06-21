@@ -1,13 +1,16 @@
 import React from 'react';
 import Header from './components/Header';
 import Directory from './components/Directory';
+import { StoreProvider } from './utils/GlobalState';
 import './App.scss';
 
 function App() {
   return (
     <main className="container">
-			<Header />
-			<Directory />
+      <StoreProvider>			
+        <Header />
+			  <Directory />
+      </StoreProvider>
 		</main>
   );
 }
