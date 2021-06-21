@@ -18,9 +18,15 @@ function DirectoryControls() {
     return (
         <div>
             {state.viewMode === 'list' ? (
-                <button className="btn btn-outline-primary" onClick={() => setTableView()}>List View</button>
+                <div>
+                    <button key="1" className="btn btn-primary mx-2" >List View</button>
+                    <button key="2" className="btn btn-outline-primary mx-2" onClick={() => setTableView()}>Table View</button>
+                </div>
             ) : (
-                <button className="btn btn-outline-primary" onClick={() => setListView()}>Table View</button>
+                <div>
+                    <button key="3" className="btn btn-outline-primary mx-2" onClick={() => setListView()}>List View</button>
+                    <button key="4" className="btn btn-primary mx-2" >Table View</button>
+                </div>
             )}
         </div>
     )
