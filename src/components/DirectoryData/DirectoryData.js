@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { UPDATE_EMPLOYEES, LOADING } from '../../utils/actions';
 import API from '../../utils/API';
-import { StoreProvider, useStoreContext } from '../../utils/GlobalState';
+import { useStoreContext } from '../../utils/GlobalState';
 import style from './DirectoryData.scss';
 
 function DirectoryData(){
@@ -26,6 +26,9 @@ function DirectoryData(){
 
 	return(
 		<div>
+			<div>
+				
+			</div>
 			<div>
 			{ state.employees.length ? (
 				<table className="table">
