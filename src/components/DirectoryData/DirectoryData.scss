@@ -27,3 +27,9 @@ span>i {
 span>i:hover{
     color: map-get($theme-colors, "primary");
 }
+
+@media only screen and (max-width: 375px) {
+    table, thead, th, tbody, tr, td {
+        font-size: 11pt;
+    }
+}

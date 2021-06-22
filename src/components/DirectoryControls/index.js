@@ -56,9 +56,9 @@ function DirectoryControls() {
                 })
             } else {
                 searchResults = state.employees.filter(employee => {
+                    const name = employee.name.first.toLowerCase() + ' ' + employee.name.last.toLowerCase();
                     return (
-                        employee.name.first.toLowerCase().indexOf(debouncedSearchTerm.toLowerCase()) > -1 ||
-                        employee.name.last.toLowerCase().indexOf(debouncedSearchTerm.toLowerCase()) > -1 
+                        name.indexOf(debouncedSearchTerm.toLowerCase()) > -1
                     )
                 })
             }
