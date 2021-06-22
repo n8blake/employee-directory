@@ -22,7 +22,6 @@ function DirectoryData(){
 					return 0;
 				});
 
-
 				dispatch({
 					type: UPDATE_EMPLOYEES,
 					employees: results.data.results
@@ -38,10 +37,6 @@ function DirectoryData(){
 	const reverseSortResults = () => {
 		const reverseSortedResults = state.searchResults;
 		reverseSortedResults.reverse();
-		/*const l = state.searchResults.length;
-		for(let i = l; i > 0; i++){
-			reverseSortedResults.push(state.searchResults[i]);
-		}*/
 		dispatch({
 			type: UPDATE_SEARCH_RESULTS,
 			searchResults: reverseSortedResults
@@ -104,7 +99,7 @@ function DirectoryData(){
 					{ state.viewMode === "char" ? (
 						<tr>
 							<th className="sortable" onClick={reverseSortResults}>Name 
-								<span className="sortIcon"><i class="bi bi-arrow-down-up"></i></span>
+								<span className="sortIcon"><i className="bi bi-arrow-down-up"></i></span>
 							</th>
 							<th className="sortable" onClick={sortByNumber}>phone</th>
 						</tr>
@@ -112,7 +107,7 @@ function DirectoryData(){
 						<tr>
 							<th className="sortable" onClick={sortByName}>Name</th>
 							<th className="sortable" onClick={reverseSortResults}>phone 
-								<span className="sortIcon"><i class="bi bi-arrow-down-up"></i></span>
+								<span className="sortIcon"><i className="bi bi-arrow-down-up"></i></span>
 							</th>
 						</tr>
 					)
