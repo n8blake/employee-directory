@@ -74,8 +74,10 @@ function DirectoryControls() {
     return (
         <div className="d-flex jusitify-content-center">    
             <div className="d-flex justify-content-center">
-                <i className="bi bi-search m-2"></i>
-                <input className="form-control ml-2" type="text" onChange={handleInputChange} />
+                <div className="search-wrapper">
+                    <i className="bi bi-search m-2"></i>
+                    <input className="ml-2" type="text" onChange={handleInputChange} />
+                </div>
             </div>
         </div>
     );
