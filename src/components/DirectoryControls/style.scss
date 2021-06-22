@@ -1,0 +1,25 @@
+@import '../../theme-colors.scss';
+
+.search-wrapper {
+    display: flex;
+    flex: 1;
+    padding: 6pt 15pt 6pt 6pt;
+    margin: 0pt 6pt 10pt 6pt;
+    border: solid;
+    border-color: map-get($theme-colors, "secondary");
+    border-width: 1pt;
+    border-radius: 24pt;
+}
+
+input {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 18pt;
+}
+
+input:focus {
+    border: none;
+    background-color: black;
+    outline: none !important;
+}

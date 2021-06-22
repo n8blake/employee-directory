@@ -1,0 +1,18 @@
+@import '../../theme-colors.scss';
+
+div {
+	margin: auto;
+	margin-top: 20pt;
+	text-align: center;
+}
+
+h1 {
+	font-family: rosella-deco, sans-serif;
+	font-weight: light;
+	font-size: 28pt;
+	color: map-get($theme-colors, "primary");
+}
+
+.header-embellishment {
+	width: 22pt;
+}
