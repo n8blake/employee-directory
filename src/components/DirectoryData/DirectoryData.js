@@ -21,15 +21,18 @@ function DirectoryData(){
 					}
 					return 0;
 				});
-
+				dispatch({
+					type: SET_VIEW_MODE,
+					viewMode: "AZ"
+				});
 				dispatch({
 					type: UPDATE_EMPLOYEES,
 					employees: results.data.results
-				})
+				});
 				dispatch({
 					type: UPDATE_SEARCH_RESULTS,
 					searchResults: results.data.results
-				})
+				});
 			})
 			.catch(error => console.error(error));
 	}
@@ -41,12 +44,41 @@ function DirectoryData(){
 			type: UPDATE_SEARCH_RESULTS,
 			searchResults: reverseSortedResults
 		})
+		switch(state.viewMode){
+			case "AZ":
+				dispatch({
+					type: SET_VIEW_MODE,
+					viewMode: "ZA"
+				});
+				break;
+			case "ZA":
+				dispatch({
+					type: SET_VIEW_MODE,
+					viewMode: "AZ"
+				});
+				break;
+			case "19":
+				dispatch({
+					type: SET_VIEW_MODE,
+					viewMode: "91"
+				});
+				break;
+			case "91":
+				dispatch({
+					type: SET_VIEW_MODE,
+					viewMode: "19"
+				});
+				break;
+			default:
+				break;
+		}
+		
 	}
 
 	const sortByName = () => {
 		dispatch({
 			type: SET_VIEW_MODE,
-			viewMode: "char"
+			viewMode: "AZ"
 		});
 		const sortedResults = state.searchResults;
 		sortedResults.sort((a, b) => {
@@ -67,7 +99,7 @@ function DirectoryData(){
 	const sortByNumber = () => {
 		dispatch({
 			type: SET_VIEW_MODE,
-			viewMode: "num"
+			viewMode: "19"
 		});
 		const sortedResults = state.searchResults;
 		sortedResults.sort((a, b) => {
@@ -96,10 +128,16 @@ function DirectoryData(){
 			{ state.searchResults.length ? (
 				<table className="table">
 					<thead>	
-					{ state.viewMode === "char" ? (
+					{ (state.viewMode === "AZ" || state.viewMode === "ZA") ? (
 						<tr>
 							<th className="sortable" onClick={reverseSortResults}>Name 
-								<span className="sortIcon"><i className="bi bi-arrow-down-up"></i></span>
+								<span className="sortIcon">
+									{ state.viewMode === "AZ" ? (
+										<i className="bi bi-sort-alpha-down"></i>
+									) : (
+										<i className="bi bi-sort-alpha-up-alt"></i>
+									)}	
+								</span>
 							</th>
 							<th className="sortable" onClick={sortByNumber}>phone</th>
 						</tr>
@@ -107,7 +145,13 @@ function DirectoryData(){
 						<tr>
 							<th className="sortable" onClick={sortByName}>Name</th>
 							<th className="sortable" onClick={reverseSortResults}>phone 
-								<span className="sortIcon"><i className="bi bi-arrow-down-up"></i></span>
+								<span className="sortIcon">
+									{ state.viewMode === "19" ? (
+										<i className="bi bi-sort-numeric-down"></i>
+									) : (
+										<i className="bi bi-sort-numeric-up-alt"></i>
+									)}
+								</span>
 							</th>
 						</tr>
 					)
