@@ -9,3 +9,21 @@ table, thead, th, tbody, tr, td {
     border-color: map-get($theme-colors, "dark");
     
 }
+
+.sortable {
+    cursor: pointer;
+}
+
+.sortIcon {
+    padding-left: 4pt;
+    
+}
+span>i {
+    color: map-get($theme-colors, "dark");
+    transition: color .2s;
+    transition-timing-function: ease-in-out;
+}
+
+span>i:hover{
+    color: map-get($theme-colors, "primary");
+}

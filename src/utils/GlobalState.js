@@ -44,7 +44,7 @@ const StoreProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer, {
         employees: [],
         activeEmployee: {},
-        viewMode: "table",
+        viewMode: "char",
         searchTerm: "",
         searchResults: [],
         loading: false
