@@ -23,3 +23,15 @@ input:focus {
     background-color: black;
     outline: none !important;
 }
+
+@media only screen and (max-width: 750px) {
+    input {
+        font-size: 14pt;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    input {
+        font-size: 12pt;
+    }
+}
